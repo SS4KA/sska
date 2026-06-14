@@ -43,7 +43,7 @@ const FilterSidebar = ({ isOpen, onClose, filters, onApplyFilters, onClearFilter
     <div className={`filter-sidebar ${isOpen ? "active" : ""}`} id="filterMenu">
       <div className="filter-sidebar-container">
         <button className="close-sidebar-btn" onClick={onClose}>
-          <img src="/src/assets/close_icon.svg" alt="close" className="icon" />
+          <img src="./src/assets/close_icon.svg" alt="close" className="icon" />
         </button>
         <div className="filter-sidebar-content">
           <ul className="filter-group-list">
