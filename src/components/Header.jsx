@@ -2,8 +2,8 @@ import React from "react";
 
 const Header = ({ theme, toggleTheme }) => {
   const themeIcon = theme === "dark" 
-    ? "/src/assets/light_icon_wh.svg" 
-    : "/src/assets/dark_icon.svg";
+    ? "./src/assets/light_icon_wh.svg" 
+    : "./src/assets/dark_icon.svg";
 
   return (
     <header className="header">
