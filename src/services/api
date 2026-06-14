@@ -1,0 +1,29 @@
+// src/services/api.js
+const API_URL = "https://registry.scalar.com/@mail-ufgwz/apis/gallery-api@1.0";
+
+export const fetchPaintings = async () => {
+  const response = await fetch(API_URL, {
+    headers: { 'Accept': 'application/json' }
+  });
+  
+  if (!response.ok) throw new Error(`HTTP ${response.status}`);
+  
+  const spec = await response.json();
+  
+  // Извлекаем example из спецификации
+  const example = spec.paths['/paintings'].get.responses['200'].content['application/json'].example;
+  
+  if (!Array.isArray(example)) throw new Error('Example is not an array');
+  
+  // Приводим к формату, который ожидают компоненты
+  const paintings = example.map((item, index) => ({
+    id: index + 1,
+    title: item.title,
+    artist: item.artist,
+    location: item.location,
+    year: item.year,
+    imageUrl: item.imageUrl,  // Сохраняем как есть, но нужно убедиться, что это валидный URL
+  }));
+  
+  return paintings;
+};
